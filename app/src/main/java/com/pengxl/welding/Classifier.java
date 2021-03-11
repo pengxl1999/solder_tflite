@@ -80,7 +80,7 @@ public class Classifier {
 //            Log.i("pxl", Arrays.toString(output1.getFloatArray()));
             Inference.Outputs infOutput = inf.process(output1, output2);
             extractBoxes(infOutput, 0.5f);
-            non_max_suppresion(0.5f);
+            nonMaxSuppresion(0.5f);
             model.close();
             transform.close();
             inf.close();
@@ -189,7 +189,7 @@ public class Classifier {
         return new float[]{x1, y1, x2, y2};
     }
 
-    private void non_max_suppresion(float IoUThreshold) {
+    private void nonMaxSuppresion(float IoUThreshold) {
         yoloOutputs.sort(new Comparator<YoloOutput>() {
             @Override
             public int compare(YoloOutput o1, YoloOutput o2) {
